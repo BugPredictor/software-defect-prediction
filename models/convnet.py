@@ -28,7 +28,6 @@ class ConvNet(tf.keras.Model):
 
         input_layer = Input(shape=self.model_input_shape)
 
-        # 定义网络架构
         latent = Conv1D(filters=256, kernel_size=3, activation='relu')(input_layer) 
         latent = BatchNormalization()(latent)
         attention_layer_1 = Attention(d_model=256, d_k=256, d_v=256) 
@@ -51,7 +50,7 @@ class ConvNet(tf.keras.Model):
         
         latent = Flatten()(latent)
         latent = Dense(units=8, activation='relu')(latent)
-        # latent = Dropout(rate=0.5)(latent)  # 添加 Dropout
+        # latent = Dropout(rate=0.5)(latent)  
         
         logits_layer = Dense(units=self.n_classes)(latent)
         output_layer = Activation('softmax')(logits_layer)
