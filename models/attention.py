@@ -45,8 +45,6 @@ class Attention(layers.Layer):
 
 
 if __name__ == '__main__':
-    # input = tf.random.normal((50, 49, 512))
-    # sa = ScaledDotProductAttention(d_model=512, d_k=512, d_v=512, h=8)
     input = tf.random.normal((10, 21))
     sa = Attention(d_model=21, d_k=21, d_v=21)
     output = sa(input, input, input)
